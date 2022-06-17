@@ -36,7 +36,7 @@ You can use one of the following methods to import Everstake's public key:
 ```bash
 $ gpg --import everstake-public-gpg.asc
 
-$ gpg --recv-keys dc4086e9056c17234d62a44e302f408b14f95372
+$ gpg --keyserver hkps://keyserver.ubuntu.com --recv-keys dc4086e9056c17234d62a44e302f408b14f95372
 ```
 
 Export your public key to an ASCII file:
