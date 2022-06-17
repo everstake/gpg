@@ -32,14 +32,16 @@ $ gpg --list-secret-keys
 
 ## Import and export public keys
 
-Import our public key:
+You can use one of the following methods to import Everstake's public key:
 ```bash
-$ gpg --import everstake-public-gpg.key
+$ gpg --import everstake-public-gpg.asc
+
+$ gpg --recv-keys dc4086e9056c17234d62a44e302f408b14f95372
 ```
 
 Export your public key to an ASCII file:
 ```bash
-$ gpg -a -o your-public-gpg.key --export <key-id>
+$ gpg -a -o your-public-gpg.asc --export <key-id>
 ```
 If no `<key-id>` has been entered, all present keys will be exported.
 
