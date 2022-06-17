@@ -38,6 +38,8 @@ $ gpg --import everstake-public-gpg.asc
 
 $ gpg --keyserver hkps://keyserver.ubuntu.com --recv-keys dc4086e9056c17234d62a44e302f408b14f95372
 ```
+You can find the 'everstake-public-gpg.asc' file at https://everstake.one/gpg/everstake-public-gpg.asc
+
 
 Export your public key to an ASCII file:
 ```bash
