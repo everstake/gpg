@@ -1,64 +1,47 @@
-# Quick-start guide to GPG
+## How to encrypt your message for Everstake
 
-## Creating new keys
+- [1. Creating new keypair](#creating-new-keypair)
+- [2. Import Everstake public key](#import-everstake-public-key)
+- [3. Encrypting your vulnerability report](#encrypting-your-vulnerability-report)
+- [4. Vulnerability reporting guidelines](#vulnerability-reporting-guidelines)
 
-First create a new keypair (private and public key):
+### Creating new keypair
+
 ```bash
 $ gpg --full-gen-key
 ```
 
-The user will be prompted to answer the following questions:
-1. **Keypair:** RSA and RSA.
-2. **Keysize:** 4096.
-3. **Expiration date:** A period of years is enough most of the time. 
-4. **Name and email address.**
-5. **Comment:** Add a comment for the key's purpose.
-6. **Passphrase**.
+Choose RSA algorithm and 4096 keysize.
 
 
-## Get information about keys
+### Import Everstake public key
+In order to encrypt a file for another user as well as to verify their
+signatures, we need their public key.
 
-List all public keys:
-```bash
-$ gpg --list-keys
-$ gpg --list-sigs   # list signatures
-$ gpg --fingerprint # list fingerprints
-```
-
-List private (secret) keys:
-```bash
-$ gpg --list-secret-keys
-```
-
-## Import and export public keys
-
-You can use one of the following methods to import Everstake's public key:
+You can use one of the following methods to import Everstake's [public key](https://keyserver.ubuntu.com/pks/lookup?search=0xdc4086e9056c17234d62a44e302f408b14f95372&fingerprint=on&op=index):
 ```bash
 $ gpg --import everstake-public-gpg.asc
 
 $ gpg --keyserver hkps://keyserver.ubuntu.com --recv-keys dc4086e9056c17234d62a44e302f408b14f95372
 ```
-You can find the 'everstake-public-gpg.asc' file at https://everstake.one/gpg/everstake-public-gpg.asc
 
+#### PGP Key info
+Double-check the key before encrypting -  [**everstake-public-gpg.asc**](https://everstake.one/security/everstake-public-gpg.asc)
 
-Export your public key to an ASCII file:
-```bash
-$ gpg -a -o your-public-gpg.asc --export <key-id>
-```
-If no `<key-id>` has been entered, all present keys will be exported.
+  ```text
+  pub   rsa4096 2022-05-27 [SC] [expires: 2027-05-26]
+        DC4086E9056C17234D62A44E302F408B14F95372
+  uid           [ unknown] Everstake <security@everstake.one>
+  sub   rsa4096 2022-05-27 [E] [expires: 2027-05-26]
+  ```
 
-In order to encrypt a documents for another user as well as to verify their
-signatures, we need their public key.
+### Encrypting your vulnerability report 
 
-
-## Encrypting and decrypting
-
-After a public key has been imported, you can encrypt a file for us:
+After the public key has been imported, you can encrypt a file for us:
 ```bash
 $ gpg -r security@everstake.one -e <some-file>
 ```
 
-Decrypt a file that has been encrypted with our own public key:
-```bash
-$ gpg -o somefile.txt -d somefile.txt.gpg
-```
+### Vulnerability reporting guidelines 
+
+Please follow vulnerability reporting guidelines on our [website](https://everstake.one/security/report-vulnerability).
