@@ -44,4 +44,4 @@ $ gpg -r security@everstake.one -e <some-file>
 
 ### Vulnerability reporting guidelines 
 
-Please follow vulnerability reporting guidelines on our [website](https://everstake.one/security/report-vulnerability).
+Please follow vulnerability reporting guidelines on our [website](https://everstake.one/report-vulnerability).
