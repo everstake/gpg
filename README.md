@@ -17,15 +17,22 @@ $ gpg --armor --export you@example.com > my-key.asc
 ```
 ### Import Everstake public key
 In order to encrypt a file for another user as well as to verify their
-signatures, we need their public key. Use one of the following methods:
+signatures, we need their public key. Use any one of the sources below;
+all of them serve the same key.
+From this repository:
 ```bash
-$ gpg --import everstake-public-gpg.asc
+$ curl -fsSL https://raw.githubusercontent.com/everstake/gpg/main/everstake-public-gpg.asc | gpg --import
+```
+From our website:
+```bash
 $ curl -fsSL https://everstake.com/security/everstake-public-gpg.asc | gpg --import
+```
+From a public keyserver:
+```bash
 $ gpg --keyserver hkps://keys.openpgp.org --recv-keys 2377CD73030BFC1EF8C5D6DAA5B4CBBB3367F984
 ```
 ### Verify the key
-Double-check the fingerprint before encrypting -
-[**everstake-public-gpg.asc**](https://everstake.com/security/everstake-public-gpg.asc):
+Double-check the fingerprint before encrypting:
 ```bash
 $ gpg --fingerprint security@everstake.com
 ```
@@ -53,11 +60,7 @@ pub   rsa4096 2022-05-27 [SC]
 uid   Everstake <security@everstake.one>
 ```
 The previous key has certified the new key, and the transition statement
-[transition-2026.txt.asc](transition-2026.txt.asc) is signed by both keys:
-```bash
-$ gpg --verify transition-2026.txt.asc
-```
-Do not use the previous key for new reports.
+[transition-2026.txt.asc](transition-2026.txt.asc)
 ### Vulnerability reporting guidelines
 Please follow the vulnerability reporting guidelines on our
 [website](https://everstake.com/report-vulnerability).
